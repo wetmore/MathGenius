@@ -26,9 +26,49 @@ if (Meteor.isClient) {
   Template.proposition.events({
     'click .line-sep': function(event){
       var trigger_elem = event.currentTarget;
-      console.log(trigger_elem.id);
-    }
+      var annotations = Annotations.find({
+        line: parseInt(trigger_elem.id, 10),
+        proposition: Session.get('prop')
+      }).fetch();
+
+      console.log(annotations);
+
+      $('.content #ann-container').empty();
+      if (annotations) {
+        for (var i = 0; i < annotations.length; i++) {
+          $('.content #ann-container').append('<div class="ui item">' + annotations[i].text + '</div>');
+        }
+      }
+      
+      $('.ui.modal')
+        .modal('show')
+      ;
+      $('.negative').on('click', function() {
+        $('.close.icon').click();
+      });
+      $('.positive').on('click', function() {
+        var text = $('textarea').val();
+        $('textarea').val('');
+        Annotations.insert({
+          type: 'explanation',
+          text: text,
+          vote: 1,
+          line: parseInt(trigger_elem.id, 10),
+          proposition: Session.get('prop')
+        });
+        $('span#' + parseInt(trigger_elem.id,10)).addClass('highlighted');
+        $('.close.icon').click();
+      });
+    },
   });
+
+  Template.proposition.rendered = function() {
+    var annotated = Annotations.find({ proposition: Session.get('prop') }).fetch();
+    for (var i = 0; i < annotated.length; i++) {
+      var line = annotated[i].line;
+      $('span#' + line).addClass('highlighted');
+    }
+  };
 
 }
 

@@ -64,6 +64,7 @@ if (Meteor.isClient) {
               var prop = Propositions.findOne({
                 number: parseInt(this.params.prop, 10)
               });
+              Session.set('prop', prop._id);
               return {
                 definitions: defs, 
                 proposition: prop,
