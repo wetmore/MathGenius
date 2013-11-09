@@ -2,7 +2,7 @@
   <h1>{{topic.name}}</h1>
   <ul>
   {{#each sections}}
-    <li><a href="#">{{name}}</a></li>
+    <li><a href="/topics/{{../topic.encodedname}}/{{encodedname}}">{{name}}</a></li>
   {{/each}}
   </ul>
 </template>

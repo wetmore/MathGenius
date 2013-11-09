@@ -1,5 +1,4 @@
 Meteor.startup(function() {
-  Topics.remove({});
 
   if (Topics.find().count() === 0) {
     var topic_id = Topics.insert({

@@ -1,3 +1,5 @@
+if (Meteor.isClient) {
+
 Router.map(function () {
   this.route('home', {
     path: '/'
@@ -14,8 +16,8 @@ Router.map(function () {
     path: 'topics/:name',
     // route to a specific topic. list the sections
     data: function() {
-      if (Topics.find().count() > 0) {
-        var topic = Topics.findOne({ encodedname: this.params.name });
+      var topic = Topics.findOne({ encodedname: this.params.name });
+      if (topic) {
         return {
           topic: topic,
           sections: Sections.find(
@@ -31,21 +33,25 @@ Router.map(function () {
     path: 'topics/:name/:section',
 
     data: function() {
-      if (Sections.find().count() > 0) {
-        var topic = Topics.findOne({ encodedname: this.params.name });
+      var topic = Topics.findOne({ encodedname: this.params.name });
+      if (topic) {
         var section = Sections.findOne({ encodedname: this.params.section, topic: topic._id});
-        var defs = Definitions.find({section: section._id}).fetch();
-        var props = Propositions.find(
-          { section: section._id}, 
-          { sort: { number: 1 } }
-        ).fetch();
+        if (section) {
+          var defs = Definitions.find({section: section._id}).fetch();
+          var props = Propositions.find(
+            { section: section._id}, 
+            { sort: { number: 1 } }
+          ).fetch();
 
-        console.log(defs, props);
-        return {
+          console.log(defs, props);
+          return {
 
+          };
         }
-      };
+      }
     }
     // route to a specific section. list the theorems
   });
 });
+
+};
