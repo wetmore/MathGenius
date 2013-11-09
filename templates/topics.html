@@ -1,0 +1,8 @@
+<template name="topics">
+  <h1>Topics</h1>
+  <ul>
+  {{#each topics}}
+    <li><a href="/topics/{{encodedname}}">{{name}}</a></li>
+  {{/each}}
+  </ul>
+</template>
