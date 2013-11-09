@@ -1,3 +1,25 @@
 <template name="home">
-  <h1>MathGenius</h1>
+  <div id="bg">
+    <div class="ui page grid home">
+      <div id="math" class="column center aligned">
+      </div>
+    </div>
+  </div>
+  <div id="fg">
+    <div class="ui page grid home">
+      <div class="column center aligned">
+        <div id="math">
+        {{#mathjax}}
+        $$ \int_{\partial \Omega} \omega = \int_{\Omega} \mathrm{d}\omega $$
+        {{/mathjax}}
+        </div>
+        <div class="triangle-up"></div>
+        <h1 class="header">MathGenius</h1>
+        <p>
+          Annotate to educate.
+        </p>
+          <a href="/topics" class="ui blue button">View the topics</a>
+      </div>
+    </div>
+  </div>
 </template>
