@@ -2,6 +2,7 @@ Topics = new Meteor.Collection('topics');
 Sections = new Meteor.Collection('sections');
 Definitions = new Meteor.Collection('definitions');
 Propositions = new Meteor.Collection('propositions');
+Annotations = new Meteor.Collection('annotations');
 
 if (Meteor.isClient) {
   Handlebars.registerHelper("capitalize", function(word, context) {
@@ -18,7 +19,16 @@ if (Meteor.isClient) {
       options: options,
       context: this,
     });
+
+
   });
+  // Event handlers
+  // Template.proposition.events({
+  //   'click .line-sep': function(event){
+  //     var trigger_elem = event.currentTarget;
+  //     console.log(trigger_elem.id);
+  //   }
+  // });
 
 }
 

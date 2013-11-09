@@ -4,6 +4,7 @@ Meteor.startup(function() {
     Sections.remove({});
     Definitions.remove({});
     Propositions.remove({});
+    Annotations.remove({});
     var topic_id = Topics.insert({
       name: 'Graph Theory',
       encodedname: 'graphtheory'
@@ -104,12 +105,21 @@ Meteor.startup(function() {
         section: section_ids[1],
         number: 3,
         statement: 'If there is a walk with ends $u, v$ in $G$, then there is a path in $G$ with the same ends.',
-        proof: 'Choose the walk in $G$ with ends $u$ and $v$ of minimal length. We will show that it corresponds to a path, i.e. that it has no repeated vertices. Suppose not, i.e. the walk is given by $v_0 e_1 v_1 \\cdots v_n$, and $v_i = v_j$ for some $i < j$. Then $v_0 e_1 v_1 \\cdots v_i v_{j+1} \\cdots v_n$ is a shorter walk with the same ends, which proves the claim by contradiction.'
+        proof: '<span class="line-sep" id="1">Choose the walk in $G$ with ends $u$ and $v$ of minimal length. </span><span class="line-sep" id="2">We will show that it corresponds to a path, i.e. that it has no repeated vertices. </span><span class="line-sep" id="3">Suppose not, i.e. the walk is given by $v_0 e_1 v_1 \\cdots v_n$, and $v_i = v_j$ for some $i < j$. </span><span class="line-sep" id="4">Then $v_0 e_1 v_1 \\cdots v_i v_{j+1} \\cdots v_n$ is a shorter walk with the same ends, which proves the claim by contradiction.</span>'
       }
     ];
     for (var i = 0; i < props.length; i++) {
       Propositions.insert(props[i]);
     };
+
+    var annotations = [
+      {
+        type:'explanation',
+        text: 'Minimizing a particular quantity is a technique that you see over and over again in Graph Theory.',
+        vote: 4,
+        line: 1,
+        proposition: Propositions.findOne({number: 3})
+      }];
 
 //  }
 });
