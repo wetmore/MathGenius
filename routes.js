@@ -32,7 +32,15 @@ if (Meteor.isClient) {
 
     // route to a specific section. list the theorems
     this.route('section', {
-      path: 'topics/:name/:section/:theorem?',
+      path: 'topics/:name/:section/:prop?',
+
+      action: function() {
+        if (!this.params.prop) {
+          this.render('section');
+        } else {
+          this.render('proposition');
+        }
+      },
 
       data: function() {
         var topic = Topics.findOne({ encodedname: this.params.name });
@@ -40,18 +48,29 @@ if (Meteor.isClient) {
           var section = Sections.findOne({ encodedname: this.params.section, topic: topic._id});
           if (section) {
             var defs = Definitions.find({section: section._id}).fetch();
-            var props = Propositions.find(
-              { section: section._id}, 
-              { sort: { number: 1 } }
-            ).fetch();
 
-            console.log(defs, props);
-            return {
-              definitions: defs, 
-              propositions: props,
-              topic: topic,
-              section: section
-            };
+            if (!this.params.prop) {
+              var props = Propositions.find(
+                { section: section._id}, 
+                { sort: { number: 1 } }
+              ).fetch();
+              return {
+                definitions: defs, 
+                propositions: props,
+                topic: topic,
+                section: section
+              };
+            } else {
+              var prop = Propositions.findOne({
+                number: parseInt(this.params.prop, 10)
+              });
+              return {
+                definitions: defs, 
+                proposition: prop,
+                topic: topic,
+                section: section
+              };
+            }
           }
         }
       }

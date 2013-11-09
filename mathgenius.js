@@ -4,6 +4,10 @@ Definitions = new Meteor.Collection('definitions');
 Propositions = new Meteor.Collection('propositions');
 
 if (Meteor.isClient) {
+  Handlebars.registerHelper("capitalize", function(word, context) {
+      return word.substr(0,1).toUpperCase() + word.substr(1);
+  });
+
 }
 
 if (Meteor.isServer) {

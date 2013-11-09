@@ -1,6 +1,7 @@
 <template name="proposition">
-  <li>
-  <div class="def-term">{{term}}</div>
-  <div class="def-body"><p>{{body}}</p></div>
-  </li>
+  <h1>{{capitalize proposition.type}} {{section.number}}.{{proposition.number}}</h1>
+  <div class="prop-statement">
+      {{proposition.statement}}
+  </div>
+  <div class="prop-proof">Proof: {{proposition.proof}}</div>
 </template>
