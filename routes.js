@@ -32,7 +32,7 @@ if (Meteor.isClient) {
 
     // route to a specific section. list the theorems
     this.route('section', {
-      path: 'topics/:name/:section',
+      path: 'topics/:name/:section/:theorem?',
 
       data: function() {
         var topic = Topics.findOne({ encodedname: this.params.name });
@@ -47,13 +47,16 @@ if (Meteor.isClient) {
 
             console.log(defs, props);
             return {
-
+              definitions: defs, 
+              propositions: props,
+              topic: topic,
+              section: section
             };
           }
         }
       }
-
     });
+
   });
 
 };

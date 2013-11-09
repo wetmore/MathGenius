@@ -1,0 +1,14 @@
+<template name="section">
+  <h1>{{section.name}}</h1>
+  <ul>
+  {{#each definitions}}
+    {{> definition_inline}}
+  {{/each}}
+  </ul>
+    <ul>
+  {{#each propositions}}
+    <li><a href="{{number}}">{{type}} {{../section.number}}.{{number}}</a></li>
+  {{/each}}
+  </ul>
+
+</template>
