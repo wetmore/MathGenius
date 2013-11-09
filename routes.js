@@ -28,7 +28,24 @@ Router.map(function () {
   });
 
   this.route('section', {
-    path: 'topics/:name/:section'
+    path: 'topics/:name/:section',
+
+    data: function() {
+      if (Sections.find().count() > 0) {
+        var topic = Topics.findOne({ encodedname: this.params.name });
+        var section = Sections.findOne({ encodedname: this.params.section, topic: topic._id});
+        var defs = Definitions.find({section: section._id}).fetch();
+        var props = Propositions.find(
+          { section: section._id}, 
+          { sort: { number: 1 } }
+        ).fetch();
+
+        console.log(defs, props);
+        return {
+
+        }
+      };
+    }
     // route to a specific section. list the theorems
   });
 });
