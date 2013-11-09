@@ -43,7 +43,7 @@ Meteor.startup(function() {
         number: 3,
         statement: 'If there is a walk with ends $u, v$ in $G$, then there is a path in $G$ with the same ends.',
         proof: 'Choose the walk in $G$ with ends $u$ and $v$ of minimal length. We will show that it corresponds to a path, i.e. that it has no repeated vertices. \
-        Suppose not, i.e. the walk is given by $v_0 e_1 v_1 \ldots v_n$, and $v_i = v_j$ for some $i < j$. Then $v_0 e_1 v_1 \\ldots v_i v_{j+1} \\ldots v_n$ is a shorter walk with the same ends, which proves the claim by contradiction.'
+        Suppose not, i.e. the walk is given by $v_0 e_1 v_1 \\ldots v_n$, and $v_i = v_j$ for some $i < j$. Then $v_0 e_1 v_1 \\ldots v_i v_{j+1} \\ldots v_n$ is a shorter walk with the same ends, which proves the claim by contradiction.'
       }
     ];
     for (var i = 0; i < props.length; i++) {
