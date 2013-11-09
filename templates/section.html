@@ -1,14 +1,36 @@
 <template name="section">
-  <h1>{{section.name}}</h1>
-  <ul>
-  {{#each definitions}}
-    {{> definition_inline}}
-  {{/each}}
-  </ul>
-    <ul>
-  {{#each propositions}}
-  <li><a href="{{../section/encodedname}}/{{number}}">{{capitalize type}} {{../section.number}}.{{number}}</a></li>
-  {{/each}}
-  </ul>
+  <div class="masthead segment">
+    <div class="ui page grid">
+      <div class="ui column">
+        <h1 class="ui section header"><span>{{section.number}}</span> {{section.name}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="stripe"></div>
+  <div class="ui page center grid">
+    <div class="ui column">
+      <div class="ui dividing header">
+        Definitions
+      </div>
+      <ul>
+      {{#each definitions}}
+        {{> definition_inline}}
+      {{/each}}
+      </ul>
+      <div class="ui dividing header">
+        Propositions
+      </div>
+      <div class="ui stackable items">
+      {{#each propositions}}
+        <div class="proposition item">
+          <div class="content">
+            <a class="header" href="/topics/{{../topic.encodedname}}/{{encodedname}}">{{capitalize type}}</a>
+          <div class="proposition number">{{../section.number}}.{{number}}</div>
+          </div>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+  </div>
 
 </template>

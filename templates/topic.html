@@ -1,8 +1,27 @@
 <template name="topic">
-  <h1>{{topic.name}}</h1>
-  <ul>
-  {{#each sections}}
-    <li><a href="/topics/{{../topic.encodedname}}/{{encodedname}}">{{name}}</a></li>
-  {{/each}}
-  </ul>
+  <div class="masthead segment">
+    <div class="ui page grid">
+      <div class="ui column">
+        <h1 class="ui header">{{topic.name}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="stripe"></div>
+  <div class="ui page center grid">
+    <div class="ui column">
+      <div class="ui list">
+      {{#each sections}}
+        <div class="item msection">
+          <a class="header" href="/topics/{{../topic.encodedname}}/{{encodedname}}">
+          <div class="msection number">{{number}}</div>
+          <div class="content">
+            <div class="header">{{name}}</div>
+            <div class="msection description">{{description}}</div>
+          </div>
+          </a>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+  </div>
 </template>

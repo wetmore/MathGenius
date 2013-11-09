@@ -1,8 +1,30 @@
 <template name="topics">
-  <h1>Topics</h1>
-  <ul>
-  {{#each topics}}
-    <li><a href="/topics/{{encodedname}}">{{name}}</a></li>
-  {{/each}}
-  </ul>
+  <div class="masthead segment">
+    <div class="ui page grid">
+      <div class="ui column">
+        <h1 class="ui header">Topics</h1>
+      </div>
+    </div>
+  </div>
+  <div class="stripe"></div>
+  <div class="ui page grid">
+    <div class="ui column">
+      <div class="ui stackable items topics">
+      {{#each topics}}
+        <div class="item">
+        <a href="/topics/{{encodedname}}">
+          <div class=content">
+          <div class="ui header topic title">
+            {{name}}
+          </div>
+          </div>
+          <div class="image">
+            <img src="/images/graph.png">
+          </div>
+        </a>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+  </div>
 </template>

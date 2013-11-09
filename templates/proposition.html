@@ -1,9 +1,9 @@
 <template name="proposition">
   <h1>{{capitalize proposition.type}} {{section.number}}.{{proposition.number}}</h1>
+  {{#mathjax}}
   <div class="prop-statement">
-    {{#mathjax}}
       {{proposition.statement}}
-    {{/mathjax}}
   </div>
   <div class="prop-proof">Proof: {{proposition.proof}}</div>
+  {{/mathjax}}
 </template>
