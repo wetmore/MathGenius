@@ -1,9 +1,27 @@
 <template name="proposition">
-  <h1>{{capitalize proposition.type}} {{section.number}}.{{proposition.number}}</h1>
-  {{#mathjax}}
-  <div class="prop-statement">
-      {{proposition.statement}}
+  <div class="masthead segment">
+    <div class="ui page grid">
+      <div class="ui column">
+        <h1 class="ui section header">{{capitalize proposition.type}} <span>{{section.number}}.{{proposition.number}}</span></h1>
+        <div class="ui small breadcrumb">
+          <i class="left arrow icon divider"></i>
+          <a class="section" href="/topics/{{topic.encodedname}}">{{topic.name}}</a>
+          <i class="left arrow icon divider"></i>
+          <a class="section" href="/topics/{{topic.encodedname}}/{{section.encodedname}}">{{section.name}}</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="prop-proof">Proof: {{proposition.proof}}</div>
-  {{/mathjax}}
+  <div class="stripe"></div>
+  <div class="ui page grid">
+    <div class="ui column">
+    {{#mathjax}}
+    <div class="ui blue segment prop-statement">
+        {{proposition.statement}}
+    </div>
+    <div class="ui horizontal divider"> Proof </div>
+    <div class="prop-proof">{{proposition.proof}}</div>
+    {{/mathjax}}
+    </div>
+  </div>
 </template>

@@ -3,6 +3,10 @@
     <div class="ui page grid">
       <div class="ui column">
         <h1 class="ui section header"><span>{{section.number}}</span> {{section.name}}</h1>
+        <div class="ui small breadcrumb">
+          <i class="left arrow icon divider"></i>
+          <a class="section" href="/topics/{{topic.encodedname}}">{{topic.name}}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -23,10 +27,12 @@
       <div class="ui stackable items">
       {{#each propositions}}
         <div class="proposition item">
-          <div class="content">
-            <a class="header" href="/topics/{{../topic.encodedname}}/{{encodedname}}">{{capitalize type}}</a>
-          <div class="proposition number">{{../section.number}}.{{number}}</div>
-          </div>
+          <a href="/topics/{{../topic.encodedname}}/{{../section.encodedname}}/{{number}}">
+            <div class="content">
+              <div class="header">{{capitalize type}}</div>
+              <div class="proposition number">{{../section.number}}.{{number}}</div>
+            </div>
+          </a>
         </div>
       {{/each}}
       </div>
