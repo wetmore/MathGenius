@@ -27,11 +27,13 @@ Router.map(function () {
     }
   });
 
+
+  // route to a specific section. list the theorems
   this.route('section', {
     path: 'topics/:name/:section',
 
     data: function() {
-      if (Sections.find().count() > 0) {
+      if ((Topics.find().count() > 0) && (Sections.find().count() > 0)) {
         var topic = Topics.findOne({ encodedname: this.params.name });
         var section = Sections.findOne({ encodedname: this.params.section, topic: topic._id});
         var defs = Definitions.find({section: section._id}).fetch();
@@ -46,6 +48,6 @@ Router.map(function () {
         }
       };
     }
-    // route to a specific section. list the theorems
+
   });
 });
