@@ -23,12 +23,12 @@ if (Meteor.isClient) {
 
   });
   // Event handlers
-  // Template.proposition.events({
-  //   'click .line-sep': function(event){
-  //     var trigger_elem = event.currentTarget;
-  //     console.log(trigger_elem.id);
-  //   }
-  // });
+  Template.proposition.events({
+    'click .line-sep': function(event){
+      var trigger_elem = event.currentTarget;
+      console.log(trigger_elem.id);
+    }
+  });
 
 }
 
