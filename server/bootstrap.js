@@ -1,4 +1,6 @@
 Meteor.startup(function() {
+  Topics.remove({});
+
   if (Topics.find().count() === 0) {
     var topic_id = Topics.insert({
       name: 'Graph Theory',
@@ -8,12 +10,14 @@ Meteor.startup(function() {
       {
         name: 'Basic Definitions',
         number: 1,
-        topic: topic_id
+        topic: topic_id,
+        encodedname: 'basicdefinitions'
       },
       {
         name: 'Connectivity',
         number: 2,
-        topic: topic_id
+        topic: topic_id,
+        encodedname: 'connectivity'
       }
     ];
     var section_ids = [];
