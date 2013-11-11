@@ -1,4 +1,6 @@
 MathGenius
 ==========
 
-It's mathematics.
+Annotate to educate.
+
+mathgenius.meteor.com
