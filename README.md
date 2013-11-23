@@ -3,4 +3,4 @@ MathGenius
 
 Annotate to educate.
 
-[Demo here](mathgenius.meteor.com)
+[Demo here](http://mathgenius.meteor.com)
