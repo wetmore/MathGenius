@@ -1,0 +1,8 @@
+Django==1.6.1
+South==0.8.4
+Werkzeug==0.9.4
+argparse==1.2.1
+django-extensions==1.2.5
+ipython==1.1.0
+six==1.4.1
+wsgiref==0.1.2

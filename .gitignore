@@ -3,3 +3,6 @@
 MathGenius.sublime-project
 MathGenius.sublime-workspace
 *.pyc
+genius_env
+mathgenius/main_app/migrations/*
+mathgenius/db.sqlite3
