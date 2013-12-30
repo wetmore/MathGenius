@@ -6,3 +6,4 @@ MathGenius.sublime-workspace
 genius_env
 mathgenius/main_app/migrations/*
 mathgenius/db.sqlite3
+dev_tmp
